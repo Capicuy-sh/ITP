@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratorio de Física</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="inicio" class="seccion">
+        <h1>🌌 Mi Enciclopedia Digital</h1>
+        
+        <div class="tarjetas">
+            <div class="card" onclick="abrirArticulo()">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Newtons_cradle_animation_book_2.gif" alt="Péndulo de Newton">
+                <h2>Física: Leyes de Newton</h2>
+                <p>Descubre cómo se mueve el universo.</p>
+            </div>
+        </div>
+
+        <button class="btn-quiz" onclick="abrirQuiz()">📝 Iniciar Quiz de Física (20 preguntas)</button>
+    </div>
+
+    <div id="articulo" class="seccion oculto">
+        <button class="btn-volver" onclick="volver()">⬅ Volver al inicio</button>
+        <div id="contenido-wiki" class="wiki-style">
+            </div>
+    </div>
+
+    <div id="quiz" class="seccion oculto">
+        <button class="btn-volver" onclick="volver()">⬅ Salir del Quiz</button>
+        <div class="quiz-box">
+            <p id="q-progreso" class="progreso-texto"></p>
+            <h2 id="q-texto"></h2>
+            <div id="q-opciones"></div>
+            
+            <div id="q-feedback" class="oculto"></div>
+            <button id="btn-siguiente" class="btn-siguiente oculto" onclick="siguientePregunta()">Siguiente Pregunta ➡</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
