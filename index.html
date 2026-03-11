@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laboratorio de Física</title>
+    <title>Laboratorio de Física - Sebastián Herrera</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -20,12 +20,17 @@
         </div>
 
         <button class="btn-quiz" onclick="abrirQuiz()">📝 Iniciar Quiz de Física (20 preguntas)</button>
+        <button class="btn-fuentes" onclick="abrirFuentes()">📚 Ver Fuentes Bibliográficas</button>
+
+        <div class="creditos">
+            <p>Elaborado por: <strong>Sebastián Herrera | 3ro C</strong></p>
+        </div>
     </div>
 
     <div id="articulo" class="seccion oculto">
         <button class="btn-volver" onclick="volver()">⬅ Volver al inicio</button>
         <div id="contenido-wiki" class="wiki-style">
-            </div>
+        </div>
     </div>
 
     <div id="quiz" class="seccion oculto">
@@ -38,6 +43,18 @@
             <div id="q-feedback" class="oculto"></div>
             <button id="btn-siguiente" class="btn-siguiente oculto" onclick="siguientePregunta()">Siguiente Pregunta ➡</button>
         </div>
+    </div>
+
+    <div id="fuentes" class="seccion oculto">
+        <button class="btn-volver" onclick="volver()">⬅ Volver al inicio</button>
+        <h1 style="text-align: left; border-bottom: 2px solid #e5e7eb; padding-bottom: 10px;">📚 Fuentes Bibliográficas</h1>
+        <p>Toda la información e imágenes de esta enciclopedia fueron recopiladas de los siguientes artículos de Wikipedia:</p>
+        <ul class="lista-fuentes">
+            <li><a href="https://es.wikipedia.org/wiki/Leyes_de_Newton" target="_blank">Wikipedia: Leyes de Newton</a></li>
+            <li><a href="https://es.wikipedia.org/wiki/Inercia" target="_blank">Wikipedia: Inercia</a></li>
+            <li><a href="https://es.wikipedia.org/wiki/Gravedad" target="_blank">Wikipedia: Gravedad</a></li>
+            <li><a href="https://es.wikipedia.org/wiki/Mec%C3%A1nica_cl%C3%A1sica" target="_blank">Wikipedia: Mecánica Clásica</a></li>
+        </ul>
     </div>
 
     <script src="script.js"></script>
