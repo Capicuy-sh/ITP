@@ -44,12 +44,20 @@ h1 { text-align: center; margin-bottom: 30px; color: #3730a3; }
 
 .card img { width: 100%; border-radius: 8px; margin-bottom: 15px; }
 
-/* Botones con color Índigo (Física) */
+/* Botones */
 .btn-quiz { 
     width: 100%; background: #4f46e5; color: white; padding: 15px; 
     border-radius: 8px; font-size: 1.1rem; font-weight: bold; border: none; cursor: pointer; 
 }
 .btn-quiz:hover { background: #4338ca; }
+
+/* Nuevo Botón de Fuentes */
+.btn-fuentes {
+    width: 100%; background: #0ea5e9; color: white; padding: 15px; 
+    border-radius: 8px; font-size: 1.1rem; font-weight: bold; border: none; cursor: pointer;
+    margin-top: 15px;
+}
+.btn-fuentes:hover { background: #0284c7; }
 
 .btn-volver { 
     background: #4b5563; color: white; padding: 10px 20px; 
@@ -80,3 +88,20 @@ h1 { text-align: center; margin-bottom: 30px; color: #3730a3; }
 .wiki-style h1 { border-bottom: 2px solid #e5e7eb; padding-bottom: 10px; text-align: left; color: #3730a3;}
 .wiki-style img { width: 100%; max-width: 500px; display: block; margin: 20px auto; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
 .progreso-texto { color: #6b7280; font-weight: bold; margin-bottom: 10px; }
+
+/* Créditos y Fuentes */
+.creditos {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid #e5e7eb;
+    color: #4b5563;
+    font-size: 1.1rem;
+}
+.lista-fuentes {
+    list-style: none; padding: 0; margin-top: 20px; line-height: 2;
+}
+.lista-fuentes a {
+    color: #4f46e5; text-decoration: none; font-weight: bold; font-size: 1.1rem;
+}
+.lista-fuentes a:hover { text-decoration: underline; color: #3730a3; }
