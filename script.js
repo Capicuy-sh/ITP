@@ -60,18 +60,24 @@ function abrirArticulo() {
     document.getElementById('contenido-wiki').innerHTML = contenidoArticulo;
 }
 
-function volver() {
-    document.getElementById('articulo').classList.add('oculto');
-    document.getElementById('quiz').classList.add('oculto');
-    document.getElementById('inicio').classList.remove('oculto');
-    actual = 0; aciertos = 0; fallos = 0;
-}
-
 function abrirQuiz() {
     document.getElementById('inicio').classList.add('oculto');
     document.getElementById('quiz').classList.remove('oculto');
     actual = 0; aciertos = 0; fallos = 0;
     mostrarPregunta();
+}
+
+function abrirFuentes() {
+    document.getElementById('inicio').classList.add('oculto');
+    document.getElementById('fuentes').classList.remove('oculto');
+}
+
+function volver() {
+    document.getElementById('articulo').classList.add('oculto');
+    document.getElementById('quiz').classList.add('oculto');
+    document.getElementById('fuentes').classList.add('oculto');
+    document.getElementById('inicio').classList.remove('oculto');
+    actual = 0; aciertos = 0; fallos = 0;
 }
 
 function mostrarPregunta() {
