@@ -3,59 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laboratorio de Física - Sebastián Herrera</title>
+    <title>PhysicLab | Sebastián Herrera</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div id="inicio" class="seccion">
-        <h1>🌌 Mi Enciclopedia Digital</h1>
-        
-        <div class="tarjetas">
-            <div class="card" onclick="abrirArticulo()">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Newtons_cradle_animation_book_2.gif" alt="Péndulo de Newton">
-                <h2>Física: Leyes de Newton</h2>
-                <p>Descubre cómo se mueve el universo.</p>
+    <header class="main-header">
+        <div class="logo">🌌 Physic<span>Lab</span></div>
+        <nav class="tabs-nav">
+            <button class="tab-link active" onclick="verTab('intro')">Inicio</button>
+            <button class="tab-link" onclick="verTab('ley1')">1ª Ley</button>
+            <button class="tab-link" onclick="verTab('ley2')">2ª Ley</button>
+            <button class="tab-link" onclick="verTab('ley3')">3ª Ley</button>
+            <button class="tab-link" onclick="verTab('gravedad')">Gravedad</button>
+        </nav>
+    </header>
+
+    <main class="content-wrapper">
+        <aside class="ads-sidebar">
+            <div class="ad-box">
+                <span>ANUNCIO</span>
+                <p>¿Quieres un telescopio? 🔭 20% desc. con código NEWTON</p>
+                <button class="btn-ad">Saber más</button>
             </div>
-        </div>
+            <div class="ad-box">
+                <span>CIENCIA HOY</span>
+                <p>Únete al Club de Física de 3ro C. 🚀</p>
+            </div>
+        </aside>
 
-        <button class="btn-quiz" onclick="abrirQuiz()">📝 Iniciar Quiz de Física (20 preguntas)</button>
-        <button class="btn-fuentes" onclick="abrirFuentes()">📚 Ver Fuentes Bibliográficas</button>
+        <section class="main-content">
+            <div id="intro" class="tab-content active">
+                <div class="hero">
+                    <h1>Bienvenido a la Enciclopedia del Movimiento</h1>
+                    <p>Explora cómo las fuerzas rigen cada rincón del universo, desde una manzana cayendo hasta el lanzamiento de un cohete espacial.</p>
+                </div>
+                <div class="grid-info">
+                    <div class="info-card">
+                        <h3>¿Qué aprenderás?</h3>
+                        <p>Domina las bases de la Mecánica Clásica formuladas por Sir Isaac Newton en el siglo XVII.</p>
+                    </div>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Newtons_cradle_animation_book_2.gif" class="img-main" alt="Péndulo">
+                </div>
+            </div>
 
-        <div class="creditos">
-            <p>Elaborado por: <strong>Sebastián Herrera | 3ro C</strong></p>
-        </div>
-    </div>
+            <div id="ley1" class="tab-content">
+                <h2>La Ley de la Inercia</h2>
+                <div class="wiki-flex">
+                    <div class="text">
+                        <p>Todo cuerpo permanece en reposo o movimiento rectilíneo a menos que una fuerza externa lo obligue a cambiar.</p>
+                        <div class="mini-quiz" id="mq1">
+                            <h4>🧠 Reto Rápido</h4>
+                            <p>Si un objeto no se mueve, ¿qué fuerza neta actúa sobre él?</p>
+                            <button onclick="checkMini(this, true)">Cero</button>
+                            <button onclick="checkMini(this, false)">Infinita</button>
+                        </div>
+                    </div>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Seat_belt_demonstration.jpg/400px-Seat_belt_demonstration.jpg" alt="Inercia">
+                </div>
+            </div>
 
-    <div id="articulo" class="seccion oculto">
-        <button class="btn-volver" onclick="volver()">⬅ Volver al inicio</button>
-        <div id="contenido-wiki" class="wiki-style">
-        </div>
-    </div>
+            <div id="ley2" class="tab-content">
+                <h2>Fuerza y Aceleración</h2>
+                <div class="calculator-box">
+                    <h3>Simulador F = m · a</h3>
+                    <input type="number" id="m" placeholder="Masa (kg)" oninput="calc()">
+                    <input type="number" id="a" placeholder="Acel (m/s²)" oninput="calc()">
+                    <div class="res">Resultado: <span id="f">0</span> N</div>
+                </div>
+            </div>
 
-    <div id="quiz" class="seccion oculto">
-        <button class="btn-volver" onclick="volver()">⬅ Salir del Quiz</button>
-        <div class="quiz-box">
-            <p id="q-progreso" class="progreso-texto"></p>
-            <h2 id="q-texto"></h2>
-            <div id="q-opciones"></div>
-            
-            <div id="q-feedback" class="oculto"></div>
-            <button id="btn-siguiente" class="btn-siguiente oculto" onclick="siguientePregunta()">Siguiente Pregunta ➡</button>
-        </div>
-    </div>
+            </section>
+    </main>
 
-    <div id="fuentes" class="seccion oculto">
-        <button class="btn-volver" onclick="volver()">⬅ Volver al inicio</button>
-        <h1 style="text-align: left; border-bottom: 2px solid #e5e7eb; padding-bottom: 10px;">📚 Fuentes Bibliográficas</h1>
-        <p>Toda la información e imágenes de esta enciclopedia fueron recopiladas de los siguientes artículos de Wikipedia:</p>
-        <ul class="lista-fuentes">
-            <li><a href="https://es.wikipedia.org/wiki/Leyes_de_Newton" target="_blank">Wikipedia: Leyes de Newton</a></li>
-            <li><a href="https://es.wikipedia.org/wiki/Inercia" target="_blank">Wikipedia: Inercia</a></li>
-            <li><a href="https://es.wikipedia.org/wiki/Gravedad" target="_blank">Wikipedia: Gravedad</a></li>
-            <li><a href="https://es.wikipedia.org/wiki/Mec%C3%A1nica_cl%C3%A1sica" target="_blank">Wikipedia: Mecánica Clásica</a></li>
-        </ul>
-    </div>
+    <footer class="footer-pro">
+        <p>Desarrollado por <strong>Sebastián Herrera | 3ro C</strong> © 2026</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>
