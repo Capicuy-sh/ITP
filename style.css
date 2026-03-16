@@ -1,3 +1,4 @@
+/*
 :root {
     --primary: #4f46e5;
     --secondary: #6366f1;
@@ -8,7 +9,7 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
 
-/* Navegación */
+/
 .main-header {
     background: white; padding: 0.5rem 5%; display: flex; 
     justify-content: space-between; align-items: center;
@@ -25,20 +26,18 @@ body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); co
 .tab-btn.active { color: var(--primary); border-bottom: 3px solid var(--primary); }
 .btn-special { background: #e0e7ff; border-radius: 8px; margin-left: 10px; color: var(--primary); }
 
-/* Layout */
 .content-wrapper {
     display: grid; grid-template-columns: 280px 1fr;
     max-width: 1200px; margin: 2rem auto; gap: 2rem; padding: 0 20px;
 }
 
-/* Paneles de Contenido */
-.tab-panel { display: none; background: white; padding: 2.5rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+nd: white; padding: 2.5rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
 .tab-panel.active { display: block; animation: slideIn 0.3s ease; }
 
 .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; margin-top: 20px; }
 img { width: 100%; border-radius: 12px; border: 1px solid #e2e8f0; }
 
-/* Quiz & Calculadora */
+
 .quiz-box { background: #f8fafc; padding: 20px; border-radius: 12px; border-left: 5px solid var(--primary); margin-top: 30px; }
 .quiz-box button { margin: 10px 10px 0 0; padding: 10px 20px; border-radius: 8px; border: 1px solid #cbd5e1; cursor: pointer; font-weight: bold; }
 
@@ -46,12 +45,12 @@ img { width: 100%; border-radius: 12px; border: 1px solid #e2e8f0; }
 .inputs input { padding: 12px; border-radius: 8px; border: none; margin-right: 10px; width: 150px; }
 .result { font-size: 1.4rem; margin-top: 20px; color: #38bdf8; font-weight: bold; }
 
-/* Sidebar Anuncios */
+
 .ad-card { background: white; padding: 20px; border-radius: 12px; border: 1px dashed #cbd5e1; margin-bottom: 1rem; }
 .ad-tag { font-size: 0.7rem; color: #94a3b8; font-weight: bold; text-transform: uppercase; }
 .ad-card button { width: 100%; margin-top: 15px; padding: 8px; border-radius: 6px; border: 1px solid var(--primary); cursor: pointer; background: white; color: var(--primary); font-weight: bold; }
 .ad-card button:hover { background: var(--primary); color: white; }
 
-.main-footer { text-align: center; padding: 2rem; color: #64748b; }
+.main-footer { text-align: center; padding: 2rem; color: #64748b; } */
 
 @keyframes slideIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
