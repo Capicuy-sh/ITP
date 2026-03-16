@@ -1,3 +1,4 @@
+/*
 // SISTEMA DE NAVEGACIÓN POR PESTAÑAS (SPA)
 function cambiarTab(targetId) {
     // 1. Ocultar todos los paneles
