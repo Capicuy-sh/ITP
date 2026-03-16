@@ -11,86 +11,114 @@
     <header class="main-header">
         <div class="logo">🌌 Physic<span>Lab</span></div>
         <nav class="tabs-nav">
-            <button class="tab-link active" onclick="verTab(event, 'intro')">Inicio</button>
-            <button class="tab-link" onclick="verTab(event, 'ley1')">1ª Ley</button>
-            <button class="tab-link" onclick="verTab(event, 'ley2')">2ª Ley</button>
-            <button class="tab-link" onclick="verTab(event, 'ley3')">3ª Ley</button>
-            <button class="tab-link" onclick="verTab(event, 'gravedad')">Gravedad</button>
+            <button class="tab-btn active" onclick="cambiarTab('inicio')">Inicio</button>
+            <button class="tab-btn" onclick="cambiarTab('ley1')">1ª Ley</button>
+            <button class="tab-btn" onclick="cambiarTab('ley2')">2ª Ley</button>
+            <button class="tab-btn" onclick="cambiarTab('ley3')">3ª Ley</button>
+            <button class="tab-btn" onclick="cambiarTab('gravedad')">Gravedad</button>
+            <button class="tab-btn btn-special" onclick="cambiarTab('fuentes')">📚 Bibliografía</button>
         </nav>
     </header>
 
     <main class="content-wrapper">
-        <aside class="ads-sidebar">
-            <div class="ad-box">
-                <span>ANUNCIO</span>
-                <p>¿Quieres un telescopio? 🔭 20% desc. con código NEWTON</p>
-                <button class="btn-ad" onclick="window.open('https://n9.cl/guia-telescopios', '_blank')">Saber más</button>
+        <aside class="sidebar">
+            <div class="ad-card">
+                <span class="ad-tag">Patrocinado</span>
+                <h4>¿Buscas un Telescopio? 🔭</h4>
+                <p>Usa el código <b>NEWTON20</b> para un 20% de descuento en tu primera compra espacial.</p>
+                <button onclick="window.open('https://n9.cl/guia-telescopios', '_blank')">Saber más</button>
             </div>
-            <div class="ad-box">
-                <span>CIENCIA HOY</span>
-                <p>Únete al Club de Física de 3ro C. 🚀</p>
+            <div class="ad-card">
+                <span class="ad-tag">Aviso</span>
+                <h4>Club de Física 3ro C</h4>
+                <p>Próxima reunión: Viernes en el laboratorio. ¡No faltes! 🚀</p>
             </div>
         </aside>
 
-        <section class="main-content">
-            <div id="intro" class="tab-content active">
+        <section class="display-area">
+            
+            <article id="inicio" class="tab-panel active">
                 <div class="hero">
-                    <h1>Bienvenido a la Enciclopedia del Movimiento</h1>
-                    <p>Explora las bases de la Mecánica Clásica formuladas por Sir Isaac Newton.</p>
+                    <h1>Explora el Universo de Newton</h1>
+                    <p>Bienvenido a la enciclopedia digital definitiva sobre el movimiento. Aquí aprenderás cómo las fuerzas invisibles dictan el comportamiento de todo lo que te rodea.</p>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Newtons_cradle_animation_book_2.gif" alt="Péndulo de Newton">
                 </div>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Newtons_cradle_animation_book_2.gif" class="img-full" alt="Péndulo de Newton">
-            </div>
+            </article>
 
-            <div id="ley1" class="tab-content">
-                <h2>1ª Ley: Ley de la Inercia</h2>
-                <p>Un objeto no cambiará su estado de movimiento a menos que una fuerza externa actúe sobre él.</p>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Seat_belt_demonstration.jpg/400px-Seat_belt_demonstration.jpg" alt="Inercia">
-                <div class="quiz-container">
-                    <h3>📝 Quiz Rápido: Inercia</h3>
-                    <p id="q1-texto">¿Qué objeto tiene más inercia?</p>
-                    <div class="quiz-options">
-                        <button onclick="responder(this, false)">Una pluma</button>
-                        <button onclick="responder(this, true)">Un camión</button>
+            <article id="ley1" class="tab-panel">
+                <h2>1ª Ley: La Inercia</h2>
+                <div class="info-grid">
+                    <div class="text">
+                        <p>Esta ley establece que un objeto permanecerá en reposo o con movimiento uniforme a menos que sobre él actúe una fuerza externa.</p>
+                        <p>Es la razón por la cual necesitamos el cinturón de seguridad: tu cuerpo quiere seguir moviéndose aunque el auto se detenga.</p>
                     </div>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Seat_belt_demonstration.jpg/400px-Seat_belt_demonstration.jpg" alt="Ejemplo de Inercia">
                 </div>
-            </div>
+                <div class="quiz-box">
+                    <h3>🧠 Desafío Rápido</h3>
+                    <p>¿Qué sucede si un objeto no recibe ninguna fuerza?</p>
+                    <button onclick="quiz(this, true)">Sigue igual</button>
+                    <button onclick="quiz(this, false)">Se detiene</button>
+                </div>
+            </article>
 
-            <div id="ley2" class="tab-content">
-                <h2>2ª Ley: Fuerza y Aceleración</h2>
+            <article id="ley2" class="tab-panel">
+                <h2>2ª Ley: Dinámica</h2>
+                <p>La aceleración de un objeto es directamente proporcional a la fuerza neta que actúa sobre él e inversamente proporcional a su masa.</p>
                 <div class="calculator">
-                    <h3>Simulador Matemático (F = m · a)</h3>
-                    <div class="input-grid">
-                        <input type="number" id="m" placeholder="Masa (kg)" oninput="calc()">
-                        <input type="number" id="a" placeholder="Acel (m/s²)" oninput="calc()">
+                    <h3>Simulador de Fuerza ($F = m \cdot a$)</h3>
+                    <div class="inputs">
+                        <input type="number" id="m" placeholder="Masa (kg)" oninput="calcular()">
+                        <input type="number" id="a" placeholder="Aceleración (m/s²)" oninput="calcular()">
                     </div>
-                    <div class="res-box">Fuerza: <span id="f-res">0</span> N</div>
+                    <div class="result">Fuerza Resultante: <span id="f-val">0</span> Newtons</div>
                 </div>
-                <p>La fuerza neta es igual al producto de la masa por la aceleración.</p>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Friction_between_surfaces.jpg/400px-Friction_between_surfaces.jpg" alt="Fuerza">
-            </div>
+                <div class="quiz-box">
+                    <h3>🧠 Desafío Rápido</h3>
+                    <p>A más masa, ¿qué ocurre con la aceleración (usando la misma fuerza)?</p>
+                    <button onclick="quiz(this, false)">Aumenta</button>
+                    <button onclick="quiz(this, true)">Disminuye</button>
+                </div>
+            </article>
 
-            <div id="ley3" class="tab-content">
+            <article id="ley3" class="tab-panel">
                 <h2>3ª Ley: Acción y Reacción</h2>
-                <p>A cada acción siempre se opone una reacción igual pero de sentido contrario.</p>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Soyuz_TMA-9_launch.jpg/400px-Soyuz_TMA-9_launch.jpg" alt="Cohete">
-                <div class="quiz-container">
-                    <h3>📝 Quiz Rápido: Acción/Reacción</h3>
-                    <p>Si empujas una pared con 50N, ¿con cuánta fuerza te empuja ella?</p>
-                    <button onclick="responder(this, true)">50N</button>
-                    <button onclick="responder(this, false)">0N</button>
+                <div class="info-grid">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Soyuz_TMA-9_launch.jpg/400px-Soyuz_TMA-9_launch.jpg" alt="Cohete">
+                    <div class="text">
+                        <p>Por cada acción hay siempre una reacción igual y opuesta. Las fuerzas nunca actúan solas, siempre ocurren en pares.</p>
+                        <p>Cuando caminas, empujas la tierra hacia atrás y la tierra te empuja hacia adelante con la misma fuerza.</p>
+                    </div>
                 </div>
-            </div>
+                <div class="quiz-box">
+                    <h3>🧠 Desafío Rápido</h3>
+                    <p>Si golpeas una mesa con la mano, ¿la mesa te golpea a ti?</p>
+                    <button onclick="quiz(this, true)">Sí, con la misma fuerza</button>
+                    <button onclick="quiz(this, false)">No, es solo madera</button>
+                </div>
+            </article>
 
-            <div id="gravedad" class="tab-content">
-                <h2>Ley de Gravitación Universal</h2>
-                <p>La fuerza de atracción depende de la masa de los objetos y la distancia entre ellos.</p>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Law_of_Universal_Gravitation.svg/500px-Law_of_Universal_Gravitation.svg.png" alt="Gravedad">
-            </div>
+            <article id="gravedad" class="tab-panel">
+                <h2>Gravitación Universal</h2>
+                <p>Newton descubrió que la misma fuerza que hace caer una manzana mantiene a la Luna en su órbita.</p>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Law_of_Universal_Gravitation.svg/500px-Law_of_Universal_Gravitation.svg.png" alt="Gravedad" style="max-width: 400px; margin: 0 auto; display: block;">
+            </article>
+
+            <article id="fuentes" class="tab-panel">
+                <h2>📚 Fuentes Bibliográficas</h2>
+                <p>Este proyecto educativo utiliza información verificada de las siguientes fuentes:</p>
+                <ul class="sources-list">
+                    <li><a href="https://es.wikipedia.org/wiki/Leyes_de_Newton" target="_blank">Wikipedia: Leyes de Newton</a></li>
+                    <li><a href="https://es.wikipedia.org/wiki/Mec%C3%A1nica_cl%C3%A1sica" target="_blank">Fundamentos de Mecánica Clásica</a></li>
+                    <li><a href="https://es.wikipedia.org/wiki/Isaac_Newton" target="_blank">Biografía de Isaac Newton</a></li>
+                </ul>
+            </article>
+
         </section>
     </main>
 
-    <footer class="footer-pro">
-        <p>Proyecto elaborado por <strong>Sebastián Herrera | 3ro C</strong></p>
+    <footer class="main-footer">
+        <p>Enciclopedia Digital | Elaborado por <b>Sebastián Herrera - 3ro C</b> © 2026</p>
     </footer>
 
     <script src="script.js"></script>
