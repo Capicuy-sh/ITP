@@ -5,28 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PhysicLab | Sebastián Herrera</title>
     <style>
-        /* CSS PROFESIONAL - ESTILO DARK PREMIUM */
+        /* =========================================
+           CSS: DISEÑO DE INTERFAZ PROFESIONAL
+           ========================================= */
         :root {
-            --primary: #6366f1;
-            --accent: #06b6d4;
-            --bg-dark: #0f172a;
-            --card-bg: #1e293b;
+            --primary: #6366f1; /* Indigo moderno */
+            --accent: #22d3ee;  /* Cian brillante */
+            --bg-dark: #0f172a; /* Azul noche profundo */
+            --card-bg: #1e293b; /* Slate grisáceo */
             --text-main: #f8fafc;
             --text-dim: #94a3b8;
+            --success: #10b981;
+            --error: #ef4444;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
+
         body { 
-            font-family: 'Inter', system-ui, -apple-system, sans-serif; 
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
             background-color: var(--bg-dark); 
             color: var(--text-main);
-            line-height: 1.6;
-            overflow-x: hidden;
+            line-height: 1.7;
         }
 
-        /* NAVEGACIÓN */
+        /* NAVEGACIÓN SUPERIOR */
         header {
-            background: rgba(15, 23, 42, 0.9);
+            background: rgba(15, 23, 42, 0.95);
             backdrop-filter: blur(10px);
             padding: 1rem 5%;
             display: flex;
@@ -36,257 +40,315 @@
             top: 0;
             z-index: 1000;
             border-bottom: 1px solid #334155;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
         }
 
-        .logo { font-size: 1.8rem; font-weight: 800; letter-spacing: -1px; }
+        .logo { font-size: 1.8rem; font-weight: 800; letter-spacing: -1px; cursor: default; }
         .logo span { color: var(--primary); }
 
-        nav { display: flex; gap: 10px; }
+        nav { display: flex; gap: 8px; }
         .nav-btn {
             background: transparent;
             border: none;
             color: var(--text-dim);
-            padding: 8px 16px;
+            padding: 10px 18px;
             cursor: pointer;
             font-weight: 600;
             border-radius: 8px;
-            transition: 0.3s;
+            transition: all 0.3s ease;
         }
-        .nav-btn:hover, .nav-btn.active {
-            color: white;
-            background: var(--primary);
-        }
+        .nav-btn:hover { color: white; background: rgba(255,255,255,0.05); }
+        .nav-btn.active { color: white; background: var(--primary); box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4); }
 
-        /* LAYOUT */
-        .container {
+        /* CUERPO DEL PROYECTO */
+        .main-container {
             display: grid;
-            grid-template-columns: 300px 1fr;
-            max-width: 1300px;
-            margin: 2rem auto;
+            grid-template-columns: 280px 1fr;
+            max-width: 1400px;
+            margin: 2.5rem auto;
             gap: 2rem;
-            padding: 0 20px;
+            padding: 0 25px;
         }
 
-        /* SIDEBAR / ANUNCIOS */
+        /* SIDEBAR (ANUNCIOS Y CLUB) */
         .sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
-        .ad-card {
+        .card-widget {
             background: var(--card-bg);
             padding: 1.5rem;
-            border-radius: 16px;
+            border-radius: 20px;
             border: 1px solid #334155;
-            position: relative;
-            overflow: hidden;
+            transition: transform 0.3s ease;
         }
-        .ad-card::before {
-            content: "ANUNCIO";
-            font-size: 10px;
-            background: var(--primary);
-            padding: 2px 8px;
-            border-radius: 4px;
-            position: absolute;
-            top: 10px; right: 10px;
-        }
-        .btn-link {
-            display: block;
+        .card-widget:hover { transform: translateY(-5px); }
+        .badge { font-size: 11px; background: var(--accent); color: #000; padding: 2px 8px; border-radius: 4px; font-weight: 900; margin-bottom: 10px; display: inline-block; }
+        .btn-cta {
+            display: inline-block;
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             background: var(--primary);
             color: white;
             text-align: center;
             text-decoration: none;
-            border-radius: 8px;
+            border-radius: 10px;
             margin-top: 15px;
             font-weight: bold;
+            font-size: 0.9rem;
         }
 
-        /* CONTENIDO PRINCIPAL */
-        .content-section {
+        /* ÁREA DE CONTENIDO */
+        .content-box {
             background: var(--card-bg);
-            padding: 3rem;
-            border-radius: 20px;
-            min-height: 600px;
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+            padding: 3.5rem;
+            border-radius: 24px;
+            border: 1px solid #334155;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            position: relative;
         }
 
-        .page { display: none; animation: fadeIn 0.5s ease; }
+        .page { display: none; animation: slideUp 0.6s cubic-bezier(0.23, 1, 0.32, 1); }
         .page.active { display: block; }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideUp { 
+            from { opacity: 0; transform: translateY(30px); } 
+            to { opacity: 1; transform: translateY(0); } 
+        }
 
-        h1, h2 { color: white; margin-bottom: 1.5rem; }
-        p { color: var(--text-dim); margin-bottom: 1.2rem; font-size: 1.1rem; }
+        h1 { font-size: 2.8rem; margin-bottom: 1.5rem; background: linear-gradient(to right, #fff, var(--text-dim)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        h2 { font-size: 2rem; color: var(--accent); margin-bottom: 1.2rem; }
+        p { font-size: 1.15rem; color: var(--text-dim); margin-bottom: 1.5rem; }
 
-        /* IMÁGENES PROFESIONALES */
-        .img-box {
+        .img-featured {
             width: 100%;
-            border-radius: 12px;
-            margin: 2rem 0;
+            border-radius: 18px;
+            margin: 1.5rem 0;
             border: 1px solid #475569;
-            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.3);
+            filter: grayscale(20%);
+            transition: 0.5s;
         }
+        .img-featured:hover { filter: grayscale(0%); }
 
-        /* QUIZ ESTILO PREMIUM */
-        .quiz-container {
+        /* CALCULADORA DINÁMICA */
+        .sim-box {
             background: #0f172a;
-            padding: 2rem;
-            border-radius: 12px;
-            border-left: 4px solid var(--accent);
-            margin-top: 2rem;
+            padding: 2.5rem;
+            border-radius: 18px;
+            margin: 2rem 0;
+            border: 1px solid var(--primary);
         }
-        .quiz-options { display: flex; gap: 1rem; margin-top: 1rem; }
-        .q-btn {
-            padding: 12px 24px;
-            border: 2px solid #334155;
-            background: transparent;
+        .input-group { display: flex; gap: 20px; align-items: center; margin-bottom: 20px; }
+        input[type="number"] {
+            background: #1e293b;
+            border: 1px solid #475569;
             color: white;
+            padding: 12px;
             border-radius: 8px;
-            cursor: pointer;
-            transition: 0.2s;
+            width: 120px;
+            font-size: 1.1rem;
         }
-        .q-btn:hover { border-color: var(--primary); }
+        .res-display { font-size: 1.5rem; color: var(--accent); font-weight: 800; }
+
+        /* SISTEMA DE QUIZ */
+        .quiz-card {
+            background: rgba(99, 102, 241, 0.05);
+            padding: 2rem;
+            border-radius: 18px;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            margin-top: 3rem;
+        }
+        .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 1.5rem; }
+        .option-btn {
+            background: #1e293b;
+            border: 1px solid #334155;
+            color: white;
+            padding: 15px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .option-btn:hover { border-color: var(--primary); background: #2d3a4f; }
 
         /* BIBLIOGRAFÍA */
-        .source-item {
+        .biblio-list { list-style: none; }
+        .biblio-item {
             background: #111827;
-            padding: 1rem;
-            border-radius: 8px;
-            margin-bottom: 10px;
+            padding: 1.2rem;
+            border-radius: 12px;
+            margin-bottom: 12px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            border-left: 4px solid var(--primary);
         }
-        .source-item a { color: var(--accent); text-decoration: none; }
+        .biblio-item a { color: var(--accent); text-decoration: none; font-weight: bold; font-size: 0.9rem; }
 
-        footer { text-align: center; padding: 3rem; color: var(--text-dim); font-size: 0.9rem; }
+        footer { text-align: center; padding: 4rem; color: #475569; font-weight: 600; }
     </style>
 </head>
 <body>
 
     <header>
         <div class="logo">🌌 Physic<span>Lab</span></div>
-        <nav>
-            <button class="nav-btn active" onclick="showPage('inicio', this)">Inicio</button>
-            <button class="nav-btn" onclick="showPage('ley1', this)">1ª Ley</button>
-            <button class="nav-btn" onclick="showPage('ley2', this)">2ª Ley</button>
-            <button class="nav-btn" onclick="showPage('ley3', this)">3ª Ley</button>
-            <button class="nav-btn" onclick="showPage('biblio', this)">📚 Fuentes</button>
+        <nav id="main-nav">
+            <button class="nav-btn active" onclick="switchTab('inicio')">Inicio</button>
+            <button class="nav-btn" onclick="switchTab('ley1')">1ª Ley</button>
+            <button class="nav-btn" onclick="switchTab('ley2')">2ª Ley</button>
+            <button class="nav-btn" onclick="switchTab('ley3')">3ª Ley</button>
+            <button class="nav-btn" onclick="switchTab('biblio')">Biografías</button>
         </nav>
     </header>
 
-    <div class="container">
+    <div class="main-container">
         <aside class="sidebar">
-            <div class="ad-card">
-                <h4>Óptica de Precisión</h4>
-                <p>¿Quieres ver los anillos de Saturno? Los mejores telescopios con 20% desc.</p>
-                <a href="https://n9.cl/guia-telescopios" target="_blank" class="btn-link">Ver Catálogo</a>
+            <div class="card-widget">
+                <span class="badge">OFERTA</span>
+                <h4>Explora el Cosmos</h4>
+                <p>Telescopios profesionales para estudiantes de ciencias. ¡Usa el código NEWTON!</p>
+                <a href="https://n9.cl/guia-telescopios" target="_blank" class="btn-cta">Saber más</a>
             </div>
-            <div class="ad-card">
-                <h4>Club de Ciencias</h4>
-                <p>Participa en el proyecto de 3ro C sobre cinemática aplicada.</p>
+            <div class="card-widget">
+                <span class="badge">EVENTO</span>
+                <h4>Club de Física 3ro C</h4>
+                <p>Únete a nuestro taller de robótica y cinemática este jueves.</p>
             </div>
         </aside>
 
-        <main class="content-section">
+        <main class="content-box">
             
-            <section id="inicio" class="page active">
-                <h1>Enciclopedia del Movimiento</h1>
-                <p>Bienvenido a la plataforma interactiva de Física Clásica. Aquí desglosamos las leyes que rigen desde el átomo hasta las galaxias. Desarrollado para mentes curiosas que buscan entender el "por qué" de las cosas.</p>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Newtons_cradle_animation_book_2.gif" class="img-box" alt="Péndulo">
-                <p>Isaac Newton cambió el mundo en el siglo XVII con sus principios matemáticos. Hoy, tú puedes explorarlos aquí.</p>
-            </section>
+            <article id="inicio" class="page active">
+                <h1>Principios de la Naturaleza</h1>
+                <p>Esta enciclopedia digital es un recorrido interactivo por las Leyes de Newton, los pilares de la física que explican cómo se mueven los objetos en nuestro universo. Información curada para estudiantes de alto rendimiento.</p>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Newtons_cradle_animation_book_2.gif" class="img-featured" alt="Péndulo">
+                <p>Navega a través de las pestañas superiores para descubrir experimentos, cálculos en tiempo real y desafíos de conocimiento.</p>
+            </article>
 
-            <section id="ley1" class="page">
-                <h2>La Ley de la Inercia</h2>
-                <p>Todo cuerpo preserva su estado de reposo o movimiento uniforme y rectilíneo a no ser que sea obligado a cambiar su estado por fuerzas impresas sobre él.</p>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Seat_belt_demonstration.jpg/400px-Seat_belt_demonstration.jpg" class="img-box" alt="Inercia">
-                <div class="quiz-container">
-                    <h3>¿Entendiste la Inercia?</h3>
-                    <p>Si un auto frena de golpe, ¿por qué te vas hacia adelante?</p>
-                    <div class="quiz-options">
-                        <button class="q-btn" onclick="check(this, true)">Por tu propia inercia</button>
-                        <button class="q-btn" onclick="check(this, false)">Por la fuerza del motor</button>
+            <article id="ley1" class="page">
+                <h2>Ley I: La Inercia</h2>
+                <p>Establece que un cuerpo no modifica su estado de reposo o de movimiento si no se aplica ninguna fuerza sobre él, o si la resultante de las fuerzas que se le aplican es nula.</p>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Seat_belt_demonstration.jpg/500px-Seat_belt_demonstration.jpg" class="img-featured" alt="Seguridad e Inercia">
+                <div class="quiz-card">
+                    <h3>⚡ Desafío de Inercia</h3>
+                    <p>Si lanzas una pelota en el espacio exterior (sin gravedad ni aire), ¿qué le pasará?</p>
+                    <div class="options-grid">
+                        <button class="option-btn" onclick="ans(this, true)">Seguirá en línea recta para siempre</button>
+                        <button class="option-btn" onclick="ans(this, false)">Se detendrá poco a poco</button>
                     </div>
                 </div>
-            </section>
+            </article>
 
-            <section id="ley2" class="page">
-                <h2>Ley Fundamental de la Dinámica</h2>
-                <p>El cambio de movimiento es proporcional a la fuerza motriz impresa y ocurre según la línea recta a lo largo de la cual aquella fuerza se imprime ($F = m \cdot a$).</p>
-                <div style="background: #111827; padding: 20px; border-radius: 12px; margin: 20px 0;">
-                    <label>Masa (kg): </label><input type="number" id="m" value="10" oninput="calc()" style="background:#1e293b; color:white; border:none; padding:5px; border-radius:4px;">
-                    <label> Aceleración (m/s²): </label><input type="number" id="a" value="2" oninput="calc()" style="background:#1e293b; color:white; border:none; padding:5px; border-radius:4px;">
-                    <h3 style="margin-top:15px; color:var(--accent);">Fuerza: <span id="f-res">20</span> Newtons</h3>
+            <article id="ley2" class="page">
+                <h2>Ley II: La Dinámica</h2>
+                <p>La fuerza neta aplicada sobre un cuerpo es proporcional a la aceleración que adquiere en su trayectoria. La fórmula maestra es $F = m \cdot a$.</p>
+                
+                <div class="sim-box">
+                    <h3>Simulador de Fuerza</h3>
+                    <div class="input-group">
+                        <div><label>Masa (kg):</label><br><input type="number" id="m" value="10" oninput="solveF()"></div>
+                        <div><label>Aceleración (m/s²):</label><br><input type="number" id="a" value="5" oninput="solveF()"></div>
+                    </div>
+                    <div class="res-display">Fuerza Calculada: <span id="f-val">50.00</span> Newtons</div>
                 </div>
-                <div class="quiz-container">
-                    <h3>Quiz de Dinámica</h3>
-                    <p>Si duplicas la fuerza sobre un objeto, ¿qué pasa con su aceleración?</p>
-                    <div class="quiz-options">
-                        <button class="q-btn" onclick="check(this, true)">Se duplica</button>
-                        <button class="q-btn" onclick="check(this, false)">Se reduce a la mitad</button>
+
+                <div class="quiz-card">
+                    <h3>⚡ Desafío de Dinámica</h3>
+                    <p>Si aplicas la misma fuerza a un objeto con el doble de masa, ¿qué pasa?</p>
+                    <div class="options-grid">
+                        <button class="option-btn" onclick="ans(this, false)">Se acelera el doble</button>
+                        <button class="option-btn" onclick="ans(this, true)">Su aceleración cae a la mitad</button>
                     </div>
                 </div>
-            </section>
+            </article>
 
-            <section id="ley3" class="page">
-                <h2>Acción y Reacción</h2>
-                <p>Con toda acción ocurre siempre una reacción igual y contraria: o sea, las acciones mutuas de dos cuerpos siempre son iguales y dirigidas en sentido opuesto.</p>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Soyuz_TMA-9_launch.jpg/400px-Soyuz_TMA-9_launch.jpg" class="img-box" alt="Acción Reacción">
-                <div class="quiz-container">
-                    <h3>Quiz de la 3ra Ley</h3>
-                    <p>Un cohete sube porque los gases expulsados empujan...</p>
-                    <div class="quiz-options">
-                        <button class="q-btn" onclick="check(this, false)">El aire de afuera</button>
-                        <button class="q-btn" onclick="check(this, true)">Al cohete en sentido opuesto</button>
+            <article id="ley3" class="page">
+                <h2>Ley III: Acción y Reacción</h2>
+                <p>Establece que cuando dos partículas interactúan, la fuerza sobre una partícula es igual y opuesta a la fuerza que interactúa sobre la otra partícula.</p>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Soyuz_TMA-9_launch.jpg/500px-Soyuz_TMA-9_launch.jpg" class="img-featured" alt="Propulsión">
+                <div class="quiz-card">
+                    <h3>⚡ Desafío de Reacción</h3>
+                    <p>Al remar en un bote, empujas el agua hacia atrás para que el bote vaya...</p>
+                    <div class="options-grid">
+                        <button class="option-btn" onclick="ans(this, true)">Hacia adelante</button>
+                        <button class="option-btn" onclick="ans(this, false)">Hacia los lados</button>
                     </div>
                 </div>
-            </section>
+            </article>
 
-            <section id="biblio" class="page">
-                <h2>Bibliografía y Referencias</h2>
-                <div class="source-item">
-                    <span>Leyes de Newton - Wikipedia</span>
-                    <a href="https://es.wikipedia.org/wiki/Leyes_de_Newton" target="_blank">Visitar fuente</a>
+            <article id="biblio" class="page">
+                <h2>Biografías y Bibliografía</h2>
+                <p>Fuentes oficiales utilizadas para la construcción de este laboratorio digital:</p>
+                <div class="biblio-list">
+                    <div class="biblio-item">
+                        <span>Leyes de Newton - Física Clásica (Wikipedia)</span>
+                        <a href="https://es.wikipedia.org/wiki/Leyes_de_Newton" target="_blank">VER FUENTE</a>
+                    </div>
+                    <div class="biblio-item">
+                        <span>Biografía de Sir Isaac Newton (Britannica)</span>
+                        <a href="https://es.wikipedia.org/wiki/Isaac_Newton" target="_blank">VER FUENTE</a>
+                    </div>
+                    <div class="biblio-item">
+                        <span>Principia Mathematica - Conceptos Fundamentales</span>
+                        <a href="https://www.fisicapractica.com/" target="_blank">VER FUENTE</a>
+                    </div>
                 </div>
-                <div class="source-item">
-                    <span>Biografía de Isaac Newton</span>
-                    <a href="https://es.wikipedia.org/wiki/Isaac_Newton" target="_blank">Visitar fuente</a>
-                </div>
-                <div class="source-item">
-                    <span>Mecánica Clásica - Conceptos</span>
-                    <a href="https://www.fisicapractica.com/leyes-de-newton.php" target="_blank">Visitar fuente</a>
-                </div>
-            </section>
+            </article>
 
         </main>
     </div>
 
     <footer>
-        Proyecto de Física | <strong>Sebastián Herrera</strong> | 3ro C | 2026
+        PhysicLab © 2026 | Desarrollado por Sebastián Herrera | 3ro C
     </footer>
 
     <script>
-        function showPage(pageId, btn) {
-            // Ocultar todas
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            // Quitar active de botones
-            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+        /* =========================================
+           JAVASCRIPT: LÓGICA DE INTERACTIVIDAD
+           ========================================= */
+
+        // 1. Navegación fluida entre pestañas
+        function switchTab(id) {
+            // Ocultar todas las páginas
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(p => p.classList.remove('active'));
+
+            // Quitar estado activo de botones
+            const btns = document.querySelectorAll('.nav-btn');
+            btns.forEach(b => b.classList.remove('active'));
+
+            // Mostrar la seleccionada
+            document.getElementById(id).classList.add('active');
             
-            // Mostrar seleccionada
-            document.getElementById(pageId).classList.add('active');
-            btn.classList.add('active');
-            window.scrollTo(0,0);
+            // Buscar el botón que se presionó y activarlo
+            const activeBtn = Array.from(btns).find(b => b.getAttribute('onclick').includes(id));
+            if(activeBtn) activeBtn.classList.add('active');
+
+            // Scroll suave hacia arriba
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function calc() {
-            let m = document.getElementById('m').value;
-            let a = document.getElementById('a').value;
-            document.getElementById('f-res').innerText = (m * a).toFixed(2);
+        // 2. Calculadora de la Segunda Ley
+        function solveF() {
+            const m = parseFloat(document.getElementById('m').value) || 0;
+            const a = parseFloat(document.getElementById('a').value) || 0;
+            const res = (m * a).toFixed(2);
+            document.getElementById('f-val').innerText = res;
         }
 
-        function check(btn, isCorrect) {
-            btn.style.backgroundColor = isCorrect ? "#10b981" : "#ef4444";
-            btn.style.color = "white";
-            btn.innerText = isCorrect ? "¡Correcto! ✨" : "Inténtalo de nuevo ❌";
+        // 3. Sistema de Quizzes
+        function ans(btn, correct) {
+            // Desactivar botones hermanos para que no sigan clickeando
+            const container = btn.parentElement;
+            const buttons = container.querySelectorAll('.option-btn');
+            buttons.forEach(b => b.disabled = true);
+
+            if(correct) {
+                btn.style.backgroundColor = "var(--success)";
+                btn.style.borderColor = "var(--success)";
+                btn.innerText = "¡Correcto! 🏆";
+            } else {
+                btn.style.backgroundColor = "var(--error)";
+                btn.style.borderColor = "var(--error)";
+                btn.innerText = "Incorrecto ❌";
+            }
         }
     </script>
 </body>
