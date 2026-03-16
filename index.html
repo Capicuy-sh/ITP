@@ -225,7 +225,9 @@
             <article id="ley1" class="page">
                 <h2>Ley I: La Inercia</h2>
                 <p>Establece que un cuerpo no modifica su estado de reposo o de movimiento si no se aplica ninguna fuerza sobre él, o si la resultante de las fuerzas que se le aplican es nula.</p>
+                
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Seat_belt_demonstration.jpg/500px-Seat_belt_demonstration.jpg" class="img-featured" alt="Seguridad e Inercia">
+                
                 <div class="quiz-card">
                     <h3>⚡ Desafío de Inercia</h3>
                     <p>Si lanzas una pelota en el espacio exterior (sin gravedad ni aire), ¿qué le pasará?</p>
@@ -334,22 +336,4 @@
         }
 
         // 3. Sistema de Quizzes
-        function ans(btn, correct) {
-            // Desactivar botones hermanos para que no sigan clickeando
-            const container = btn.parentElement;
-            const buttons = container.querySelectorAll('.option-btn');
-            buttons.forEach(b => b.disabled = true);
-
-            if(correct) {
-                btn.style.backgroundColor = "var(--success)";
-                btn.style.borderColor = "var(--success)";
-                btn.innerText = "¡Correcto! 🏆";
-            } else {
-                btn.style.backgroundColor = "var(--error)";
-                btn.style.borderColor = "var(--error)";
-                btn.innerText = "Incorrecto ❌";
-            }
-        }
-    </script>
-</body>
-</html>
+        function
