@@ -52,3 +52,4 @@ function quiz(btn, esCorrecto) {
         btn.innerText = "Error ❌";
     }
 }
+*/
