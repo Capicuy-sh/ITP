@@ -1,4 +1,3 @@
-/*
 // SISTEMA DE NAVEGACIÓN POR PESTAÑAS (SPA)
 function cambiarTab(targetId) {
     // 1. Ocultar todos los paneles
@@ -52,4 +51,3 @@ function quiz(btn, esCorrecto) {
         btn.innerText = "Error ❌";
     }
 }
-*/
